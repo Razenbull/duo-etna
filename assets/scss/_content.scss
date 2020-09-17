@@ -1,0 +1,34 @@
+.content {
+    h3 {
+        @apply text-3xl;
+        @apply mt-16;
+        @apply mb-10;
+    }
+
+    p {
+        @apply mb-5;
+    }
+
+    strong {
+        @apply font-bold;
+    }
+
+    em {
+        @apply italic;
+
+    }
+
+    a {
+        @apply text-blue-600;
+        @apply underline;
+    }
+
+    img {
+        @apply max-w-full;
+        @apply mt-16;
+
+        @media (min-width: 768px) {
+            max-width: 100%;
+        }
+    }
+}

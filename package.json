@@ -1,0 +1,30 @@
+{
+  "name": "duo-etna",
+  "version": "1.0.0",
+  "description": "Nuxt.js front for Duo Etna",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.29",
+    "@fortawesome/free-brands-svg-icons": "^5.13.1",
+    "@fortawesome/free-solid-svg-icons": "^5.13.1",
+    "@fortawesome/vue-fontawesome": "^0.1.10",
+    "@nuxtjs/moment": "^1.6.1",
+    "nuxt": "^2.0.0",
+    "nuxt-fontawesome": "^0.4.0",
+    "prismic-dom": "^2.2.3",
+    "prismic-javascript": "^2.7.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/tailwindcss": "^1.0.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "video.js": "^7.8.4"
+  }
+}

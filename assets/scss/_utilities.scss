@@ -1,0 +1,40 @@
+.top-center {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.left-center {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.top-center {
+  &.left-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.rich-text {
+  p {
+    &:not(:last-child) {
+      margin-bottom: .8rem;
+    }
+  }
+}
+.border-green {
+  border-color: $green;
+}
+.text-green {
+  color: $green;
+}
+.text-gradient {
+  background: linear-gradient($gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.bg-gradient {
+  background: linear-gradient($gradient);
+}
+.absolute-x-center {
+  left : 50%;
+  transform: translateX(-50%);
+}

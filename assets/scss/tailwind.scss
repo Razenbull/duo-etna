@@ -1,0 +1,28 @@
+/* purgecss start ignore */
+
+/* TAILWIND BASE */
+@import 'tailwindcss/base';
+
+/* CUSTOM BASE */
+@import './base/vars';
+
+/* TAILWIND COMPONENTS */
+@import 'tailwindcss/components';
+
+/* COMPONENTS */
+@import './button';
+@import './section';
+@import './navigation';
+@import './content';
+
+/* purgecss end ignore */
+
+/* TAILWIND UTILITIES */
+@import 'tailwindcss/utilities';
+
+/* UTILITIES */
+@import './utilities';
+
+html {
+  scroll-behavior: smooth;
+}

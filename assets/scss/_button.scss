@@ -1,0 +1,40 @@
+.btn-play-position {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+
+    @media (min-width: 768px) {
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+}
+
+.btn-play {
+    --btn-play-size: 100px;
+
+    position: relative;
+    width: var(--btn-play-size);
+    height: var(--btn-play-size);
+    border-radius: 50%;
+    border-color: $blue;
+    overflow: hidden; /* hide a part of triangle that is overflowing */
+    cursor: pointer;
+
+    &:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-15px, -50%);
+        width: 80px;
+        height: 50px;
+        border: solid transparent;
+        border-left-width: 40px;
+        border-right-width: 40px;
+        border-top-width: 25px;
+        border-bottom-width: 25px;
+        border-left-color: $blue;
+        content: "";
+    }
+}

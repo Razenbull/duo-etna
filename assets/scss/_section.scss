@@ -1,0 +1,23 @@
+.bg-section {
+    // margin-top: -60px;
+    height: 70vh;
+
+    &--full {
+        height: 100vh;
+    }
+
+    &--with-nav {
+        height: calc(100vh - #{$sub-nav-height});
+    }
+}
+
+/* Title in the section i.e. about page's sections */
+.section-title {
+    top: 0;
+    transform: translateY(-60%);
+
+    /* invert text alignment on even elements */
+    .order-2 & {
+        right: 0;
+    }
+}
