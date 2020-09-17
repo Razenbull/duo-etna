@@ -47,6 +47,19 @@ import MainNav from '@/components/MainNav.vue'
 import VideoPlayer from '@/components/VideoPlayer.vue'
 
 export default {
+  head: {
+    script: [
+      {
+        src: 'https://vjs.zencdn.net/7.8.4/video.js'
+      }
+    ],
+    link: [
+      {
+        rel: 'stylesheet',
+        href: 'https://vjs.zencdn.net/7.8.4/video-js.css'
+      }
+    ]
+  },
   components: {
     MainNav,
     VideoPlayer
