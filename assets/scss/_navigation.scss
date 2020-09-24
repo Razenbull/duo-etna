@@ -3,7 +3,7 @@
         .nuxt-link-active {
             position: relative;
 
-            &::after {
+            span {
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -12,7 +12,6 @@
                 height: 3px;
                 margin-top: 5px;
                 background: linear-gradient($gradient);
-                content: "";
             }
         }
     }
@@ -22,8 +21,8 @@
     .scrollactive-item {
         &.is-active {
             position: relative;
-    
-            &::after {
+
+            span {
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -32,7 +31,6 @@
                 height: 3px;
                 margin-top: 5px;
                 background: linear-gradient($gradient);
-                content: "";
             }
         }
     }
