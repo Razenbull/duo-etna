@@ -36,11 +36,11 @@
 
     <!-- menu -->
     <ul class="w-full hidden flex-grow lg:flex lg:w-auto text-sm justify-end navigation" ref="collapsibleMenu">
-      <li class="px-4 pt-8 lg:pt-2 py-2 font-bold text-white"><nuxt-link to="/news">News<span></span></nuxt-link></li>
-      <li class="px-4 py-2 font-bold text-white"><nuxt-link to="/about">About<span></span></nuxt-link></li>
-      <li class="px-4 py-2 font-bold text-white"><nuxt-link to="/works">Works<span></span></nuxt-link></li>
-      <li class="px-4 py-2 font-bold text-white"><nuxt-link to="/concerts">Concerts<span></span></nuxt-link></li>
-      <li class="px-4 lg:pr-0 py-2 font-bold text-white"><nuxt-link to="/contact">Contact<span></span></nuxt-link></li>
+      <li class="px-4 pt-8 lg:pt-2 py-2 font-bold text-white"><nuxt-link to="/news">News<span class="border--active"></span></nuxt-link></li>
+      <li class="px-4 py-2 font-bold text-white"><nuxt-link to="/about">About<span class="border--active"></span></nuxt-link></li>
+      <li class="px-4 py-2 font-bold text-white"><nuxt-link to="/works">Works<span class="border--active"></span></nuxt-link></li>
+      <li class="px-4 py-2 font-bold text-white"><nuxt-link to="/concerts">Concerts<span class="border--active"></span></nuxt-link></li>
+      <li class="px-4 lg:pr-0 py-2 font-bold text-white"><nuxt-link to="/contact">Contact<span class="border--active"></span></nuxt-link></li>
     </ul>
   </nav>
 
