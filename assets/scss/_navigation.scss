@@ -1,7 +1,6 @@
 .active,
 .nuxt-link-active {
-    .main-nav .navigation &,
-    .sub-nav & {
+    .main-nav .navigation & {
         position: relative;
     
         &:after {
@@ -14,6 +13,26 @@
             margin-top: 5px;
             background: linear-gradient($gradient);
             content: "";
+        }
+    }
+}
+
+.sub-nav {
+    .scrollactive-item {
+        &.is-active {
+            position: relative;
+    
+            &:after {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                display: block;
+                width: 100%;
+                height: 3px;
+                margin-top: 5px;
+                background: linear-gradient($gradient);
+                content: "";
+            }
         }
     }
 }

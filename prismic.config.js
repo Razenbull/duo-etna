@@ -59,11 +59,11 @@ export const generatePageData = (documentType, data) => {
           title: 'collaborations',
           link: 'collaborations'
         }, {
-          title: 'solo works',
-          link: 'soloWorks'
-        }, {
           title: 'videos',
           link: 'videos'
+        }, {
+          title: 'solo works',
+          link: 'soloWorks'
         }],
         collaborations: data.filter(document => document.type === 'work' && document.tags.includes('collaboration')).map(work => {
           return {
@@ -73,18 +73,17 @@ export const generatePageData = (documentType, data) => {
             with: PrismicDOM.RichText.asText(work.data.with)
           }
         }),
-        soloWorks: data.filter(document => document.type === 'work' && document.tags.includes('solo')).map(work => {
+        videos: data.filter(document => document.type === 'work' && document.tags.includes('video')).map(work => {
           return {
             ...work,
             name: PrismicDOM.RichText.asText(work.data.name),
             image: work.data.image.url
           }
         }),
-        videos: data.filter(document => document.type === 'work' && document.tags.includes('video')).map(work => {
+        soloWorks: data.filter(document => document.type === 'work' && document.tags.includes('repertory')).map(work => {
           return {
             ...work,
-            name: PrismicDOM.RichText.asText(work.data.name),
-            image: work.data.image.url
+            repertory: PrismicDOM.RichText.asHtml(work.data.project_description)
           }
         }),
       }
@@ -97,6 +96,18 @@ export const generatePageData = (documentType, data) => {
         project_description: PrismicDOM.RichText.asHtml(data.project_description),
         artiste_description: PrismicDOM.RichText.asHtml(data.artiste_description),
         collabWith: PrismicDOM.RichText.asText(data.with),
+        videoOptions: {
+          autoplay: false,
+          controls: true,
+          preload: 'auto',
+          poster: data.background.url,
+				  sources: [
+					  {
+						  src: data.video.url,
+              type: "video/mp4"
+					  }
+				  ]
+        }
       }
 
     case 'newspage':
@@ -129,7 +140,8 @@ export const generatePageData = (documentType, data) => {
               associated_project: PrismicDOM.RichText.asText(concert.data.associated_project),
               address: PrismicDOM.RichText.asText(concert.data.address),
               description: PrismicDOM.RichText.asHtml(concert.data.description),
-              date: PrismicDOM.Date(concert.data.date)
+              from: PrismicDOM.Date(concert.data.from),
+              to: PrismicDOM.Date(concert.data.to)
             }
           })
       }

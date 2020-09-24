@@ -19,7 +19,8 @@
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
     "prismic-dom": "^2.2.3",
-    "prismic-javascript": "^2.7.1"
+    "prismic-javascript": "^2.7.1",
+    "vue-scrollactive": "^0.9.3"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^1.0.0",

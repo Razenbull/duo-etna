@@ -32,7 +32,7 @@
       <div class="section-container">
 
         <!-- Loop through about sections and change alignment for each repetition -->
-        <div :id="section.link" v-for="(section, index) in aboutSections" :key="section.title" class="container mx-auto py-12 lg:py-24 first:mt-10">
+        <div :id="section.link" v-for="(section, index) in aboutSections" :key="section.title" class="container mx-auto my-20">
           
           <!-- image with title -->
           <div :class="index % 2 === 0 ? 'order-1' : 'order-2'" class="relative">

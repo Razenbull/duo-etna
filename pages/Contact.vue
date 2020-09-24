@@ -1,9 +1,9 @@
 <template>
   
-   <div>
+   <div class="pb-24">
 
       <!-- Section background -->
-      <section class="relative z-0 overflow-hidden w-full bg-section bg-section--with-nav bg-cover bg-no-repeat bg-center" :style="`background-image: url(${background}`">
+      <section class="relative z-0 overflow-hidden w-full bg-section bg-cover bg-no-repeat bg-center" :style="`background-image: url(${background}`">
 
         <!-- black filter -->
         <div class="absolute inset-0 z-10 bg-gray-900 opacity-25"></div>
@@ -17,7 +17,7 @@
                 <!-- Title -->
                 <h1 class="text-6xl font-extrabold max-w-sm leading-tight text-blue-400 mx-auto md:mx-0 text-gradient mb-5">{{ title }}</h1>
 
-                <NewsLetterForm/>
+                <!-- <NewsLetterForm/> -->
 
                 <SocialList class="mt-3"/>
 

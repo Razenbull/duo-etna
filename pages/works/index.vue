@@ -26,35 +26,34 @@
     </section>
 
     <!-- Page secondary navigation -->
-    <!-- <SubNav v-bind:items="sections" rootPath="/works" /> -->
+    <SubNav v-bind:items="sections" rootPath="/works" />
 
     <!-- Page content -->
     <div class="section-container container mx-auto">
 
       <!-- collaborations -->
-      <div :id="'collaborations'" class="py-12 lg:py-24 first:mt-10">
+      <div :id="'collaborations'" class="my-20">
         <h2 class="text-4xl font-extrabold px-12 lg:px-0 pb-6">Collaborations</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-between">
           <Work v-for="(work, index) in collaborations" v-bind:work="work" :key="`${work.name}_${index}`" />
         </div>
       </div>
 
-      <!-- solo works -->
-      <!-- <div :id="'soloWorks'" class="py-12 lg:py-24 first:mt-10">
-        <h2 class="text-4xl font-extrabold px-12 lg:px-0 pb-6 text-center lg:text-left">Solo works</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-between">
-          <Work v-for="(work, index) in collaborations" v-bind:work="work" :key="`${work.name}_${index}`" />
-        </div>
-      </div> -->
-      
-
       <!-- videos -->
-      <!-- <div :id="'videos'" class="py-12 lg:py-24 first:mt-10">
+      <div :id="'videos'" class="my-20">
         <h2 class="text-4xl font-extrabold px-12 lg:px-0 pb-6 text-center lg:text-left">Videos</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-between">
-          <Work v-for="(work, index) in collaborations" v-bind:work="work" :key="`${work.name}_${index}`" />
+          <Work v-for="(work, index) in videos" v-bind:work="work" :key="`${work.name}_${index}`" />
         </div>
-      </div> -->
+      </div>
+
+      <!-- solo works -->
+      <div :id="'soloWorks'" class="my-20">
+        <h2 class="text-4xl font-extrabold px-12 lg:px-0 pb-6 text-center lg:text-left">Solo works</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-between">
+          <div v-html="soloWorks[0].repertory" class="content"></div>
+        </div>
+      </div>
       
     </div>
 

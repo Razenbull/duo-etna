@@ -23,15 +23,10 @@
       </div>
     </section>
 
-    <div class="news-container container mx-auto px-5 md:px-0">
+    <div class="news-container container mx-auto px-5 pb-12 md:px-0">
 
         <div class="news" v-for="newsItem in news" :key="newsItem.title">
-            <h2 class="text-5xl font-extrabold mt-24">{{newsItem.title}}</h2>
-            <p>
-                <small class="text-sm -mt-16 text-gray-500">le 02-09-2020</small>
-                <br>
-                <small class="text-sm -mt-16 text-gray-500">par duo etna</small>
-            </p>
+            <h2 class="text-5xl font-extrabold mt-24 mb-12">{{newsItem.title}}</h2>
             <div v-html="newsItem.content" class="content"></div>
         </div>
 
