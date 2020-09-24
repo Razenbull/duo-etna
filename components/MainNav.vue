@@ -61,5 +61,25 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+$blue: #00F9D7;
+$green: #5DFF81;
+$gradient: 60deg, $green, $blue;
+
+.main-nav {
+    .nuxt-link-active {
+        position: relative;
+
+        .border--active {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 3px;
+            margin-top: 5px;
+            background: linear-gradient($gradient);
+        }
+    }
+}
 </style>
