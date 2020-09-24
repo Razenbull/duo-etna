@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="work">
     
     <!-- Section background -->
     <section class="relative z-0 overflow-hidden w-full bg-section bg-cover bg-no-repeat bg-center" :style="`background-image: url(${background}`">
@@ -32,12 +32,12 @@
     </div>
 
     <!-- main content video -->
-    <div class="container mx-auto px-5 md:px-0 mt-12 overflow-hidden" v-if="videoOptions.sources[0].src">
+    <div class="container mx-auto px-5 md:px-0 py-24 mt-12 overflow-hidden" v-if="videoOptions.sources[0].src">
         <div class="relative">
-          <img :src="videoOptions.poster" class="w-1/2 mx-auto mb-8">
-          <div class="btn btn-play border-2" @click="playFullScreen"></div>
+          <video-player :options="videoOptions" ref="videoPlayer" class="mx-auto"/>
+          <!-- <img :src="videoOptions.poster" class="w-1/2 mx-auto mb-8"> -->
+          <!-- <div class="btn btn-play border-2" @click="play"></div> -->
         </div>
-        <video-player :options="videoOptions" ref="videoPlayer"/>
     </div>
 
   </div>
@@ -81,36 +81,61 @@ export default {
     }
   },
   methods: {
-    playFullScreen() {     
+    play(e) {     
       this.$refs.videoPlayer.onPlayerPlay();
+      e.target.classList.add('playing');
+
+      this.$refs.videoPlayer;
     }
   },
 };
 </script>
 
 <style lang="scss">
-  .video-js {
-    width: 100vw;
-    height: 100vh;
-    opacity: 0;
-    position: relative;
-    transition: opacity 1s ease-in-out;
-
-    &.vjs-playing {
-      @apply z-30;
-      @apply fixed;
+  .work {
+    .video-js {
+      position: relative;
       @apply w-full;
-      @apply h-full;
-      top: 0;
-      left: 0;
-      opacity: 1;
     }
-  }
 
-  .btn-play {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    .vjs-big-play-button {
+      --btn-play-size: 100px;
+      --blue: #00F9D7;
+
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: var(--btn-play-size);
+      height: var(--btn-play-size);
+      border-radius: 50%;
+      border-color: var(--blue);
+      overflow: hidden; /* hide a part of triangle that is overflowing */
+      cursor: pointer;
+
+      &:after {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-15px, -50%);
+          width: 80px;
+          height: 50px;
+          border: solid transparent;
+          border-left-width: 40px;
+          border-right-width: 40px;
+          border-top-width: 25px;
+          border-bottom-width: 25px;
+          border-left-color: var(--blue);
+          content: "";
+      }
+    }
+
+    .vjs-has-started.vjs-paused .vjs-big-play-button {
+      display: block;
+    }
+
+    .vjs-icon-placeholder {
+      opacity: 0
+    }
   }
 </style>

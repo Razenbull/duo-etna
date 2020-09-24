@@ -27,10 +27,18 @@
       </section>
 
       <!-- Page content -->
-      <div class="container mx-auto">
+      <div class="container mx-auto border-gray-200 pb-20 border-4 border-t-0 border-l-0 border-r-0">
         <h3 class="text-3xl mt-20 text-center uppercase">Concert booking</h3>
         <p class="mt-5 text-center">duoetna@gmail.com</p>
         <p class="mt-5 text-center">+32 (0)498 28 30 14</p>
+      </div>
+
+      <div class="container mx-auto">
+        <h3 class="text-3xl mt-20 text-center uppercase">Photos et vidéo</h3>
+        <p class="mt-5 text-center">Fabian De Backer</p>
+
+        <h3 class="text-3xl mt-20 text-center uppercase">Captation</h3>
+        <p class="mt-5 text-center">Piston</p>
       </div>
 
     </div>

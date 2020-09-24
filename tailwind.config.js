@@ -7,7 +7,8 @@
 module.exports = {
   theme: {},
   variants: {
-    margin: ['responsive', 'first', 'last', 'focus']
+    margin: ['responsive', 'first', 'last', 'focus'],
+    borderWidth: ['last']
   },
   plugins: []
 }

@@ -86,16 +86,18 @@ export default {
 </script>
 
 <style lang="scss">
-  .video-js {
-    width: 100vw;
-    height: 100vh;
-    opacity: 0;
-    position: relative;
-    transition: opacity 1s ease-in-out;
+  .bg-section--full {
+    .video-js {
+      width: 100vw;
+      height: 100vh;
+      opacity: 0;
+      position: relative;
+      transition: opacity 1s ease-in-out;
 
-    &.vjs-playing {
-      @apply z-30;
-      opacity: 1;
+      &.vjs-playing {
+        @apply z-30;
+        opacity: 1;
+      }
     }
   }
 </style>

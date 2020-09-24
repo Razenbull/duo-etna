@@ -100,7 +100,6 @@ export const generatePageData = (documentType, data) => {
           autoplay: false,
           controls: true,
           preload: 'auto',
-          poster: data.background.url,
 				  sources: [
 					  {
 						  src: data.video.url,

@@ -23,9 +23,9 @@
       </div>
     </section>
 
-    <div class="news-container container mx-auto px-5 pb-12 md:px-0">
+    <div class="news-container container mx-auto px-5 pb-24 md:px-0">
 
-        <div class="news" v-for="newsItem in news" :key="newsItem.title">
+        <div class="news border-gray-200 pb-20 border-4 last:border-0 border-t-0 border-l-0 border-r-0" v-for="newsItem in news" :key="newsItem.title">
             <h2 class="text-5xl font-extrabold mt-24 mb-12">{{newsItem.title}}</h2>
             <div v-html="newsItem.content" class="content"></div>
         </div>
@@ -58,20 +58,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.news {
-    &:not(:last-child) {
-        position: relative;
-        
-        &:after {
-            content: "";
-            display: block;
-            width: 100%;
-            height: 2px;
-            @apply bg-gray-400;
-            @apply mt-24;
-        }
-    }
-}
-</style>
