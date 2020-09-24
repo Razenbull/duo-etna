@@ -3,7 +3,7 @@
         .nuxt-link-active {
             position: relative;
 
-            &:after {
+            &::after {
                 position: absolute;
                 top: 100%;
                 left: 0;
@@ -23,7 +23,7 @@
         &.is-active {
             position: relative;
     
-            &:after {
+            &::after {
                 position: absolute;
                 top: 100%;
                 left: 0;
