@@ -62,8 +62,8 @@ export const generatePageData = (documentType, data) => {
           title: 'videos',
           link: 'videos'
         }, {
-          title: 'solo works',
-          link: 'soloWorks'
+          title: 'repertory',
+          link: 'repertory'
         }],
         collaborations: data.filter(document => document.type === 'work' && document.tags.includes('collaboration')).map(work => {
           return {
@@ -80,10 +80,10 @@ export const generatePageData = (documentType, data) => {
             image: work.data.image.url
           }
         }),
-        soloWorks: data.filter(document => document.type === 'work' && document.tags.includes('repertory')).map(work => {
+        repertory: data.filter(document => document.type === 'work' && document.tags.includes('repertory')).map(work => {
           return {
             ...work,
-            repertory: PrismicDOM.RichText.asHtml(work.data.project_description)
+            categories: work.data.body.map(element => PrismicDOM.RichText.asHtml(element.primary.text))
           }
         }),
       }

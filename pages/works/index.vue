@@ -47,14 +47,15 @@
         </div>
       </div>
 
-      <!-- solo works -->
-      <div :id="'soloWorks'" class="my-20">
-        <h2 class="text-4xl font-extrabold px-12 lg:px-0 pb-6 text-center lg:text-left">Solo works</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 justify-between">
-          <div v-html="soloWorks[0].repertory" class="content"></div>
+      <!-- repertory -->
+      <div :id="'repertory'" class="my-20">
+        <h2 class="text-4xl font-extrabold px-12 lg:px-0 pb-6 text-center lg:text-left">Repertory</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-16 justify-between">
+          <div v-for="(work, i) in repertory[0].categories" :key="`work_repertory_${i}`" class="content">
+            <div v-html="work"></div>
+          </div>
         </div>
       </div>
-      
     </div>
 
   </div>
