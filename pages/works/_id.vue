@@ -14,7 +14,7 @@
             <div class="mx-auto md:mx-0 text-center md:text-left">
 
                 <!-- Title -->
-                <h1 class="text-6xl font-extrabold max-w-sm leading-tight text-blue-400 mx-auto md:mx-0 text-gradient mb-5">{{ project }}</h1>
+                <h1 class="text-6xl font-extrabold max-w-md leading-tight text-blue-400 mx-auto md:mx-0 text-gradient mb-5">{{ project }}</h1>
 
                 <SocialList class="mt-3"/>
 
@@ -35,8 +35,6 @@
     <div class="container mx-auto px-5 md:px-0 py-24 mt-12 overflow-hidden" v-if="videoOptions.sources[0].src">
         <div class="relative">
           <video-player :options="videoOptions" ref="videoPlayer" class="mx-auto"/>
-          <!-- <img :src="videoOptions.poster" class="w-1/2 mx-auto mb-8"> -->
-          <!-- <div class="btn btn-play border-2" @click="play"></div> -->
         </div>
     </div>
 
@@ -98,11 +96,11 @@ export default {
       @apply w-full;
     }
 
-    .vjs-big-play-button {
+    .video-js .vjs-big-play-button {
       --btn-play-size: 100px;
       --blue: #00F9D7;
 
-      position: relative;
+      position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
