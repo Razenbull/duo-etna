@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6674438d-86fa-41b3-af83-26b03982fed0/deploy-status)](https://app.netlify.com/sites/lucid-curran-34609b/deploys)
+
 # duo-etna
 
 > Nuxt.js front for Duo Etna
