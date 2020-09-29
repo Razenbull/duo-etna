@@ -5,6 +5,7 @@
           <div class="px-6 py-4">
               <div class="font-bold text-xl mb-2">{{work.name}}</div>
               <p class="text-gray-700 text-base">{{work.with}}</p>
+              <p class="text-gray-700 text-base" v-if="work.isVideo">{{work.description}}</p>
           </div>
       </div>
     </nuxt-link>

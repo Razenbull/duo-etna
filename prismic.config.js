@@ -76,8 +76,10 @@ export const generatePageData = (documentType, data) => {
         videos: data.filter(document => document.type === 'work' && document.tags.includes('video')).map(work => {
           return {
             ...work,
+            isVideo: true,
             name: PrismicDOM.RichText.asText(work.data.name),
-            image: work.data.image.url
+            image: work.data.image.url,
+            description: PrismicDOM.RichText.asText(work.data.project_description),
           }
         }),
         repertory: data.filter(document => document.type === 'work' && document.tags.includes('repertory')).map(work => {
