@@ -56,8 +56,6 @@ export default {
   head: {
     title: 'Duo Etna | Contact, Crédits, Booking, Download',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Informations de contact, crédits ou booking. Liens de téléchargement de dossiers presse.' },
     ],
   },

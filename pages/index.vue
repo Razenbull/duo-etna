@@ -50,8 +50,6 @@ export default {
   head: {
     title: 'Duo Etna | Musiciennes créatives et originales | Musique classique, musique contemporaine, répétitive ou moderne.',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Découvrez Duo Etna deux musiciennes créatives et en perpétuelle recherche de nouveauté et d’originalité, Marie Havaux, pianiste et Camille Fisette, violoniste. Ces deux artistes apprécient s’associer à d’autres artistes, mélanger les arts et les savoir et s’enrichir de tout ce qui les entoure.' },
     ],
     script: [

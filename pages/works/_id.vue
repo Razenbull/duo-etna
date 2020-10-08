@@ -51,8 +51,6 @@ export default {
   head: {
     title: 'Duo Etna | Détail Porjet',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Détail, déscription, vidéo et images accompagnant un projet réalisé par Duo Etna seul ou en collaboration.' },
     ],
     script: [
