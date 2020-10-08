@@ -8,6 +8,9 @@ export default {
    * Headers of the page
    */
   head: {
+    htmlAttrs: {
+      lang: 'fr',
+    },
     title: 'Duo Etna | Musiciennes créatives et originales | Musique classique, musique contemporaine, répétitive ou moderne.',
     meta: [
       { charset: 'utf-8' },
