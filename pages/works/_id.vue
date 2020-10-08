@@ -49,6 +49,12 @@ import VideoPlayer from '@/components/VideoPlayer.vue'
 
 export default {
   head: {
+    title: 'Duo Etna | Détail Porjet',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Détail, déscription, vidéo et images accompagnant un projet réalisé par Duo Etna seul ou en collaboration.' },
+    ],
     script: [
       {
         src: 'https://vjs.zencdn.net/7.8.4/video.js'

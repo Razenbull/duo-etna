@@ -69,6 +69,14 @@ import SubNav from '@/components/SubNav.vue'
 import Work from '@/components/Work.vue'
 
 export default {
+  head: {
+    title: 'Duo Etna | Projets, collaborations et vidéos',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Liste descriptive des projets réalisés seuls ou en collaboration par Duo Etna.' },
+    ],
+  },
   components: {
     SocialList,
     SubNav,

@@ -35,6 +35,14 @@ import { initApi, generatePageData } from '@/prismic.config'
 import SocialList from "@/components/SocialList.vue";
 import Concert from "@/components/Concert.vue";
 export default {
+  head: {
+    title: 'Duo Etna | Agenda',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Liste des concerts passés et à venir.' },
+    ],
+  },
   components: {
     SocialList,
     Concert,

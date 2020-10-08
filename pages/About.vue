@@ -58,6 +58,14 @@ import SocialList from '@/components/SocialList.vue'
 import SubNav from '@/components/SubNav.vue'
 
 export default {
+  head: {
+    title: 'Duo Etna | A propos du duo',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Parcours de individuel Marie Havaux et Camille Fisette. Description de leur rencontre et formation du Duo Etna.' },
+    ],
+  },
   components: {
     SocialList,
     SubNav

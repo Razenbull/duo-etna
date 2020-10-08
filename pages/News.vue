@@ -40,6 +40,14 @@ import { initApi, generatePageData } from '@/prismic.config'
 import SocialList from '@/components/SocialList.vue'
 
 export default {
+  head: {
+    title: 'Duo Etna | News, collaborations.',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Partager la richesse artistique autour de récitals ou découvrir les dernières news et collaborations de Duo Etna.' },
+    ],
+  },
   components: {
     SocialList,
   },
