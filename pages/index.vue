@@ -1,107 +1,118 @@
 <template>
-  <section class="relative overflow-hidden w-full bg-section bg-section--full bg-cover bg-no-repeat bg-center" :style="`background-image: url(${background}`">
-    
+  <section
+    class="relative w-full overflow-hidden bg-center bg-no-repeat bg-cover bg-section bg-section--full"
+    :style="`background-image: url(${background}`"
+  >
     <!-- black filter -->
     <div class="absolute inset-0 z-10 bg-gray-900 opacity-25"></div>
-        
+
     <!-- Main content -->
-    <div class="container md:grid md:grid-cols-2 absolute z-20 top-center left-center">
+    <div
+      class="container absolute z-20 md:grid md:grid-cols-2 top-center left-center"
+    >
+      <!-- Left part with text -->
+      <div class="mx-auto text-center md:mx-0 md:text-left">
+        <!-- Title -->
+        <h1
+          class="max-w-sm mx-auto text-6xl font-extrabold leading-tight text-gradient md:mx-0"
+        >
+          {{ title }}
+        </h1>
 
-        <!-- Left part with text -->
-        <div class="mx-auto md:mx-0 text-center md:text-left">
+        <!-- Text -->
+        <p class="max-w-md mx-auto mt-8 text-white md:mx-0">{{ intro }}</p>
 
-          <!-- Title -->
-          <h1 class="text-6xl font-extrabold max-w-sm leading-tight text-gradient mx-auto md:mx-0">{{ title }}</h1>
+        <!-- Call to action -->
+        <nuxt-link
+          to="/about"
+          class="hidden px-6 py-3 mt-8 font-bold uppercase border-2 rounded md:inline-block border-green text-green"
+        >
+          Learn more
+        </nuxt-link>
+      </div>
 
-          <!-- Text -->
-          <p class="mt-8 text-white mx-auto md:mx-0 max-w-md">{{ intro }}</p>
-
-          <!-- Call to action -->
-          <nuxt-link to="/about" class="hidden md:inline-block mt-8 uppercase font-bold px-6 py-3 border-2 rounded border-green text-green">
-            Learn more
-          </nuxt-link>
-
+      <!-- Right part with button -->
+      <div class="relative">
+        <!-- Position button on the right -->
+        <div class="btn-play-position">
+          <!-- Button -->
+          <div class="border-2 btn btn-play" @click="playFullScreen"></div>
         </div>
-
-        <!-- Right part with button -->
-        <div class="relative">
-
-          <!-- Position button on the right -->
-          <div class="btn-play-position">
-
-            <!-- Button -->
-            <div class="btn btn-play border-2" @click="playFullScreen"></div>
-
-          </div>
-        </div>
+      </div>
     </div>
-  
-    <video-player :options="videoOptions" ref="videoPlayer"/>
+
+    <video-player :options="videoOptions" ref="videoPlayer" />
   </section>
 </template>
 
 <script>
-import Prismic from 'prismic-javascript'
-import { initApi, generatePageData } from '@/prismic.config'
-import MainNav from '@/components/MainNav.vue'
-import VideoPlayer from '@/components/VideoPlayer.vue'
+import Prismic from 'prismic-javascript';
+import { initApi, generatePageData } from '@/prismic.config';
+import MainNav from '@/components/MainNav.vue';
+import VideoPlayer from '@/components/VideoPlayer.vue';
 
 export default {
   head: {
-    title: 'Duo Etna | Musiciennes créatives et originales | Musique classique, musique contemporaine, répétitive ou moderne.',
+    title:
+      'Duo Etna | Musiciennes créatives et originales | Musique classique, musique contemporaine, répétitive ou moderne.',
     meta: [
-      { hid: 'description', name: 'description', content: 'Découvrez Duo Etna deux musiciennes créatives et en perpétuelle recherche de nouveauté et d’originalité, Marie Havaux, pianiste et Camille Fisette, violoniste. Ces deux artistes apprécient s’associer à d’autres artistes, mélanger les arts et les savoir et s’enrichir de tout ce qui les entoure.' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Découvrez Duo Etna deux musiciennes créatives et en perpétuelle recherche de nouveauté et d’originalité, Marie Havaux, pianiste et Camille Fisette, violoniste. Ces deux artistes apprécient s’associer à d’autres artistes, mélanger les arts et les savoir et s’enrichir de tout ce qui les entoure.',
+      },
     ],
     script: [
       {
-        src: 'https://vjs.zencdn.net/7.8.4/video.js'
-      }
+        src: 'https://vjs.zencdn.net/7.8.4/video.js',
+      },
     ],
     link: [
       {
         rel: 'stylesheet',
-        href: 'https://vjs.zencdn.net/7.8.4/video-js.css'
-      }
-    ]
+        href: 'https://vjs.zencdn.net/7.8.4/video-js.css',
+      },
+    ],
   },
   components: {
     MainNav,
-    VideoPlayer
+    VideoPlayer,
   },
   asyncData(context) {
     if (context.payload) {
-      return generatePageData('homepage', context.payload.data)
+      return generatePageData('homepage', context.payload.data);
     } else {
-      return initApi().then(api => {
+      return initApi().then((api) => {
         return api
           .query(Prismic.Predicates.at('document.type', 'homepage'))
-          .then(response => {
-            return generatePageData('homepage', response.results[0].data)
-          })
-      })
+          .then((response) => {
+            return generatePageData('homepage', response.results[0].data);
+          });
+      });
     }
   },
   methods: {
-    playFullScreen() {     
+    playFullScreen() {
       this.$refs.videoPlayer.onPlayerPlay();
-    }
+    },
   },
-}
+};
 </script>
 
 <style lang="scss">
-  .bg-section--full {
-    .video-js {
-      width: 100vw;
-      height: 100vh;
-      opacity: 0;
-      position: relative;
-      transition: opacity 1s ease-in-out;
+.bg-section--full {
+  .video-js {
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    position: relative;
+    transition: opacity 1s ease-in-out;
 
-      &.vjs-playing {
-        @apply z-30;
-        opacity: 1;
-      }
+    &.vjs-playing {
+      @apply z-30;
+      opacity: 1;
     }
   }
+}
 </style>

@@ -1,143 +1,109 @@
 <template>
   <div class="work">
-    
     <!-- Section background -->
-    <section class="relative z-0 overflow-hidden w-full bg-section bg-cover bg-no-repeat bg-center" :style="`background-image: url(${background}`">
+    <section
+      class="relative z-0 w-full overflow-hidden bg-center bg-no-repeat bg-cover bg-section"
+      :style="`background-image: url(${background}`"
+    >
+      <!-- black filter -->
+      <div class="absolute inset-0 z-10 bg-gray-900 opacity-25"></div>
 
-        <!-- black filter -->
-        <div class="absolute inset-0 z-10 bg-gray-900 opacity-25"></div>
+      <!-- Main content -->
+      <div class="container absolute z-20 top-center left-center">
+        <!-- Left part with text -->
+        <div class="mx-auto text-center md:mx-0 md:text-left">
+          <!-- Title -->
+          <h1
+            class="max-w-md mx-auto mb-5 text-6xl font-extrabold leading-tight text-blue-400 md:mx-0 text-gradient"
+          >
+            {{ project }}
+          </h1>
 
-        <!-- Main content -->
-        <div class="container absolute z-20 top-center left-center">
-
-            <!-- Left part with text -->
-            <div class="mx-auto md:mx-0 text-center md:text-left">
-
-                <!-- Title -->
-                <h1 class="text-6xl font-extrabold max-w-md leading-tight text-blue-400 mx-auto md:mx-0 text-gradient mb-5">{{ project }}</h1>
-
-                <SocialList class="mt-3"/>
-
-            </div>
+          <SocialList class="mt-3" />
         </div>
-
+      </div>
     </section>
 
     <!-- main content collab -->
-    <div class="container mx-auto px-5 md:px-0" v-if="collabWith">
-        <h2 class="text-3xl mt-24 mb-8">{{ collabWith }}</h2>
-        <img :src="image.url" :alt="image.alt" class="max-w-full md:max-w-sm mb-8 mr-8 float-left">
-        <div v-html="project_description" class="content float-none"></div>
-        <div v-html="artiste_description" class="content"></div>
+    <div class="container px-5 mx-auto md:px-0" v-if="collabWith">
+      <h2 class="mt-24 mb-8 text-3xl">{{ collabWith }}</h2>
+      <img
+        :src="image.url"
+        :alt="image.alt"
+        class="float-left max-w-full mb-8 mr-8 md:max-w-sm"
+      />
+      <div v-html="project_description" class="float-none content"></div>
+      <div v-html="artiste_description" class="content"></div>
     </div>
 
     <!-- main content video -->
-    <div class="container mx-auto px-5 md:px-0 py-24 mt-12 overflow-hidden" v-if="videoOptions.sources[0].src">
-        <div class="relative">
-          <video-player :options="videoOptions" ref="videoPlayer" class="mx-auto"/>
-        </div>
+    <div class="container px-5 py-24 mx-auto mt-12 md:px-0">
+      <iframe
+        v-for="video in videos"
+        :key="video"
+        :src="video"
+        title="vimeo-player"
+        :width="videoWidth"
+        :height="videoHeight"
+        frameborder="0"
+        allowfullscreen
+        class="mx-auto mt-12 first:mt-0"
+      ></iframe>
     </div>
-
   </div>
 </template>
 
 <script>
-import Prismic from "prismic-javascript"
-import { initApi, generatePageData } from "@/prismic.config"
-import SocialList from "@/components/SocialList.vue"
-import VideoPlayer from '@/components/VideoPlayer.vue'
+import Prismic from 'prismic-javascript';
+import { initApi, generatePageData } from '@/prismic.config';
+import SocialList from '@/components/SocialList.vue';
 
 export default {
   head: {
     title: 'Duo Etna | Détail Porjet',
     meta: [
-      { hid: 'description', name: 'description', content: 'Détail, déscription, vidéo et images accompagnant un projet réalisé par Duo Etna seul ou en collaboration.' },
-    ],
-    script: [
       {
-        src: 'https://vjs.zencdn.net/7.8.4/video.js'
-      }
+        hid: 'description',
+        name: 'description',
+        content:
+          'Détail, déscription, vidéo et images accompagnant un projet réalisé par Duo Etna seul ou en collaboration.',
+      },
     ],
-    link: [
-      {
-        rel: 'stylesheet',
-        href: 'https://vjs.zencdn.net/7.8.4/video-js.css'
-      }
-    ]
   },
   components: {
     SocialList,
-    VideoPlayer
+  },
+  data() {
+    return {
+      videoWidth: 1280,
+      videoHeight: 654,
+    };
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
   },
   asyncData(context) {
     if (context.payload) {
-      return generatePageData("works/:id", context.payload.data);
+      return generatePageData('works/:id', context.payload.data);
     } else {
       return initApi().then((api) => {
         return api
-          .query(Prismic.Predicates.at("document.id", context.route.params.id))
+          .query(Prismic.Predicates.at('document.id', context.route.params.id))
           .then((response) => {
-            return generatePageData("works/:id", response.results[0].data);
+            return generatePageData('works/:id', response.results[0].data);
           });
       });
     }
   },
   methods: {
-    play(e) {     
-      this.$refs.videoPlayer.onPlayerPlay();
-      e.target.classList.add('playing');
-
-      this.$refs.videoPlayer;
-    }
+    handleResize() {
+      let dif = 50;
+      if (window.innerWidth > 1080) return;
+      if (window.width > 764) dif = 150;
+      this.videoWidth = window.innerWidth - dif;
+      this.videoHeight = Math.round(this.videoWidth / 1.957);
+    },
   },
 };
 </script>
-
-<style lang="scss">
-  .work {
-    .video-js {
-      position: relative;
-      @apply w-full;
-    }
-
-    .video-js .vjs-big-play-button {
-      --btn-play-size: 100px;
-      --blue: #00F9D7;
-
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: var(--btn-play-size);
-      height: var(--btn-play-size);
-      border-radius: 50%;
-      border-color: var(--blue);
-      overflow: hidden; /* hide a part of triangle that is overflowing */
-      cursor: pointer;
-
-      &:after {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-15px, -50%);
-          width: 80px;
-          height: 50px;
-          border: solid transparent;
-          border-left-width: 40px;
-          border-right-width: 40px;
-          border-top-width: 25px;
-          border-bottom-width: 25px;
-          border-left-color: var(--blue);
-          content: "";
-      }
-    }
-
-    .vjs-has-started.vjs-paused .vjs-big-play-button {
-      display: block;
-    }
-
-    .vjs-icon-placeholder {
-      opacity: 0
-    }
-  }
-</style>

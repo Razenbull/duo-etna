@@ -6,7 +6,6 @@
 
 <script>
 import videojs from "video.js";
-
 export default {
   name: "VideoPlayer",
   props: {
@@ -14,12 +13,12 @@ export default {
       type: Object,
       default() {
         return {};
-      }
-    }
+      },
+    },
   },
   data() {
     return {
-      player: null
+      player: null,
     };
   },
   mounted() {
@@ -30,8 +29,7 @@ export default {
         console.log("onPlayerReady", this);
       }
     );
-
-    this.player.poster(this.options.poster)
+    this.player.poster(this.options.poster);
   },
   beforeDestroy() {
     if (this.player) {
@@ -42,11 +40,10 @@ export default {
     onPlayerPlay() {
       this.player.play();
     },
-
     onPlayerStop() {
       this.player.stop();
-    }
-  }
+    },
+  },
 };
 </script>
 
