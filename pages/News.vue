@@ -41,55 +41,55 @@
 </template>
 
 <script>
-import Prismic from 'prismic-javascript';
-import { initApi, generatePageData } from '@/prismic.config';
-import SocialList from '@/components/SocialList.vue';
+  import Prismic from 'prismic-javascript';
+  import { initApi, generatePageData } from '@/prismic.config';
+  import SocialList from '@/components/SocialList.vue';
 
-export default {
-  head: {
-    title: 'Duo Etna | News, collaborations.',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content:
-          'Partager la richesse artistique autour de récitals ou découvrir les dernières news et collaborations de Duo Etna.',
-      },
-    ],
-  },
-  components: {
-    SocialList,
-  },
-  asyncData(context) {
-    if (context.payload) {
-      return generatePageData('newspage', context.payload.data);
-    } else {
-      return initApi().then((api) => {
-        return api
-          .query(Prismic.Predicates.any('document.type', ['newspage', 'news']))
-          .then((response) => {
-            return generatePageData('newspage', response.results);
-          });
-      });
-    }
-  },
-  data() {
-    return {
-      headerBackground: '',
-    };
-  },
-  mounted() {
-    window.addEventListener('resize', this.handleResize);
-    this.handleResize();
-  },
-  methods: {
-    handleResize() {
-      if (this.backgroundMobile && window.innerWidth < 764) {
-        this.headerBackground = this.backgroundMobile;
+  export default {
+    head: {
+      title: 'Duo Etna | News, collaborations.',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'Partager la richesse artistique autour de récitals ou découvrir les dernières news et collaborations de Duo Etna.',
+        },
+      ],
+    },
+    components: {
+      SocialList,
+    },
+    asyncData(context) {
+      if (context.payload) {
+        return generatePageData('newspage', context.payload.data);
       } else {
-        this.headerBackground = this.background;
+        return initApi().then(api => {
+          return api
+            .query(Prismic.Predicates.any('document.type', ['newspage', 'news']))
+            .then(response => {
+              return generatePageData('newspage', response.results);
+            });
+        });
       }
     },
-  },
-};
+    data() {
+      return {
+        headerBackground: '',
+      };
+    },
+    mounted() {
+      window.addEventListener('resize', this.handleResize);
+      this.handleResize();
+    },
+    methods: {
+      handleResize() {
+        if (this.backgroundMobile && window.innerWidth < 764) {
+          this.headerBackground = this.backgroundMobile;
+        } else {
+          this.headerBackground = this.background;
+        }
+      },
+    },
+  };
 </script>

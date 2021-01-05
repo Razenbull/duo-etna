@@ -5,13 +5,13 @@ const config = {
   baseUrl: 'https://etna-nuxt-prismic.cdn.prismic.io/api/v2',
 };
 
-export const initApi = (req) => {
+export const initApi = req => {
   return Prismic.getApi(config.baseUrl, {
     req: req,
   });
 };
 
-export const linkResolver = (doc) => {
+export const linkResolver = doc => {
   if (doc.type === 'blog_post') return `/blog/${doc.uid}`;
   return `/${doc.uid}`;
 };
@@ -41,10 +41,8 @@ export const generatePageData = (documentType, data) => {
       return {
         title: PrismicDOM.RichText.asText(data.title),
         background: data.background.url,
-        backgroundMobile: data.background_mobile
-          ? data.background_mobile.url
-          : false,
-        aboutSections: data.about_section.map((section) => ({
+        backgroundMobile: data.background_mobile ? data.background_mobile.url : false,
+        aboutSections: data.about_section.map(section => ({
           title: PrismicDOM.RichText.asText(section.section_title),
           text: PrismicDOM.RichText.asHtml(section.section_text),
           image: section.section_image.url,
@@ -53,7 +51,7 @@ export const generatePageData = (documentType, data) => {
       };
 
     case 'workspage':
-      let worksPage = data.find((document) => document.type === 'workspage');
+      let worksPage = data.find(document => document.type === 'workspage');
 
       return {
         title: PrismicDOM.RichText.asText(worksPage.data.title),
@@ -76,12 +74,8 @@ export const generatePageData = (documentType, data) => {
           },
         ],
         collaborations: data
-          .filter(
-            (document) =>
-              document.type === 'work' &&
-              document.tags.includes('collaboration')
-          )
-          .map((work) => {
+          .filter(document => document.type === 'work' && document.tags.includes('collaboration'))
+          .map(work => {
             return {
               ...work,
               name: PrismicDOM.RichText.asText(work.data.name),
@@ -90,31 +84,23 @@ export const generatePageData = (documentType, data) => {
             };
           }),
         videos: data
-          .filter(
-            (document) =>
-              document.type === 'work' && document.tags.includes('video')
-          )
-          .map((work) => {
+          .filter(document => document.type === 'work' && document.tags.includes('video'))
+          .map(work => {
             return {
               ...work,
               isVideo: true,
               name: PrismicDOM.RichText.asText(work.data.name),
               image: work.data.image.url,
-              description: PrismicDOM.RichText.asText(
-                work.data.project_description
-              ),
+              description: PrismicDOM.RichText.asText(work.data.project_description),
             };
           }),
         repertory: data
-          .filter(
-            (document) =>
-              document.type === 'work' && document.tags.includes('repertory')
-          )
-          .map((work) => {
+          .filter(document => document.type === 'work' && document.tags.includes('repertory'))
+          .map(work => {
             return {
               ...work,
-              categories: work.data.body.map((element) =>
-                PrismicDOM.RichText.asHtml(element.primary.text)
+              categories: work.data.body.map(element =>
+                PrismicDOM.RichText.asHtml(element.primary.text),
               ),
             };
           }),
@@ -125,23 +111,16 @@ export const generatePageData = (documentType, data) => {
         background: data.background.url,
         image: data.image,
         project: PrismicDOM.RichText.asText(data.name),
-        project_description: PrismicDOM.RichText.asHtml(
-          data.project_description
-        ),
-        artiste_description: PrismicDOM.RichText.asHtml(
-          data.artiste_description
-        ),
+        project_description: PrismicDOM.RichText.asHtml(data.project_description),
+        artiste_description: PrismicDOM.RichText.asHtml(data.artiste_description),
         collabWith: PrismicDOM.RichText.asText(data.with),
-        videos: data.body.map((element) =>
-          element.primary.video.url.replace(
-            'vimeo.com/',
-            'player.vimeo.com/video/'
-          )
+        videos: data.body.map(element =>
+          element.primary.video.url.replace('vimeo.com/', 'player.vimeo.com/video/'),
         ),
       };
 
     case 'newspage':
-      let newsPage = data.find((document) => document.type === 'newspage');
+      let newsPage = data.find(document => document.type === 'newspage');
 
       return {
         title: PrismicDOM.RichText.asText(newsPage.data.title),
@@ -150,21 +129,18 @@ export const generatePageData = (documentType, data) => {
           ? newsPage.data.background_mobile.url
           : false,
         news: data
-          .filter((document) => document.type === 'news')
-          .map((news) => {
+          .filter(document => document.type === 'news')
+          .map(news => {
             return {
               ...news,
               title: PrismicDOM.RichText.asText(news.data.title),
-              image: news.data.image.url,
               content: PrismicDOM.RichText.asHtml(news.data.content),
             };
           }),
       };
 
     case 'concertspage':
-      let concertsPage = data.find(
-        (document) => document.type === 'concertspage'
-      );
+      let concertsPage = data.find(document => document.type === 'concertspage');
       return {
         title: PrismicDOM.RichText.asText(concertsPage.data.title),
         background: concertsPage.data.background.url,
@@ -172,14 +148,12 @@ export const generatePageData = (documentType, data) => {
           ? concertsPage.data.background_mobile.url
           : false,
         concerts: data
-          .filter((document) => document.type === 'concert')
-          .map((concert) => {
+          .filter(document => document.type === 'concert')
+          .map(concert => {
             return {
               ...concert,
               place: PrismicDOM.RichText.asText(concert.data.place),
-              associated_project: PrismicDOM.RichText.asText(
-                concert.data.associated_project
-              ),
+              associated_project: PrismicDOM.RichText.asText(concert.data.associated_project),
               address: PrismicDOM.RichText.asText(concert.data.address),
               description: PrismicDOM.RichText.asHtml(concert.data.description),
               from: PrismicDOM.Date(concert.data.from),
@@ -192,9 +166,7 @@ export const generatePageData = (documentType, data) => {
       return {
         title: PrismicDOM.RichText.asText(data.title),
         background: data.background.url,
-        backgroundMobile: data.background_mobile
-          ? data.background_mobile.url
-          : false,
+        backgroundMobile: data.background_mobile ? data.background_mobile.url : false,
       };
 
     case 'newsletter_form':
