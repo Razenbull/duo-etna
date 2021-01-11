@@ -52,7 +52,11 @@
           Videos
         </h2>
         <div class="grid justify-between grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-          <Work v-for="(work, index) in videos" v-bind:work="work" :key="`${work.name}_${index}`" />
+          <WorkVideo
+            v-for="(video, index) in videos"
+            v-bind:video="video"
+            :key="`${video.title}_${index}`"
+          />
         </div>
       </div>
 
@@ -81,6 +85,7 @@
   import SocialList from '@/components/SocialList.vue';
   import SubNav from '@/components/SubNav.vue';
   import Work from '@/components/Work.vue';
+  import WorkVideo from '@/components/WorkVideo.vue';
 
   export default {
     head: {
@@ -97,6 +102,7 @@
       SocialList,
       SubNav,
       Work,
+      WorkVideo,
     },
     asyncData(context) {
       if (context.payload) {
@@ -104,7 +110,7 @@
       } else {
         return initApi().then(api => {
           return api
-            .query(Prismic.Predicates.any('document.type', ['workspage', 'work']))
+            .query(Prismic.Predicates.any('document.type', ['workspage', 'work', 'video']))
             .then(response => {
               return generatePageData('workspage', response.results);
             });

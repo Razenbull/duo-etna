@@ -31,10 +31,10 @@
         v-for="newsItem in news"
         :key="newsItem.title"
       >
-        <h2 class="mt-24 mb-12 text-5xl font-extrabold">
-          {{ newsItem.title }}
-        </h2>
-        <div v-html="newsItem.content" class="content"></div>
+        <article
+          v-html="newsItem.content"
+          class="pb-12 prose border-b-2 border-gray-300 first:mt-24 max-w-none"
+        ></article>
       </div>
     </div>
   </div>

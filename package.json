@@ -17,6 +17,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "@nuxtjs/google-analytics": "^2.4.0",
     "@nuxtjs/moment": "^1.6.1",
+    "@tailwindcss/typography": "^0.3.1",
     "nuxt": "^2.0.0",
     "nuxt-fontawesome": "^0.4.0",
     "prismic-dom": "^2.2.3",

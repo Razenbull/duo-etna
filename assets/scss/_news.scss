@@ -1,12 +1,11 @@
 .news {
-  @media screen and (min-width: 767px) {
-    .block-img {
-      margin: 2rem 0 3rem;
-
-      img {
-        width: 50%;
-        margin-top: 0;
-      }
+  .block-img {
+    @media screen and (min-width: 767px) {
+      max-width: 50%;
     }
+  }
+
+  iframe {
+    height: 18rem;
   }
 }

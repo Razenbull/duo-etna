@@ -84,14 +84,13 @@ export const generatePageData = (documentType, data) => {
             };
           }),
         videos: data
-          .filter(document => document.type === 'work' && document.tags.includes('video'))
-          .map(work => {
+          .filter(document => document.type === 'video')
+          .map(video => {
             return {
-              ...work,
-              isVideo: true,
-              name: PrismicDOM.RichText.asText(work.data.name),
-              image: work.data.image.url,
-              description: PrismicDOM.RichText.asText(work.data.project_description),
+              ...video,
+              title: PrismicDOM.RichText.asText(video.data.title),
+              imageThumbnail: video.data.image_thumbnail.url,
+              shortDescription: PrismicDOM.RichText.asText(video.data.short_description),
             };
           }),
         repertory: data
@@ -119,6 +118,20 @@ export const generatePageData = (documentType, data) => {
         ),
       };
 
+    case 'videos/:id':
+      return {
+        background: data.image.url,
+        title: PrismicDOM.RichText.asText(data.title),
+        videos: data.body.map(element => {
+          return {
+            title: PrismicDOM.RichText.asText(element.primary.video_title),
+            video: element.primary.video_link.url.replace('vimeo.com/', 'player.vimeo.com/video/'),
+            caption: PrismicDOM.RichText.asText(element.primary.video_caption),
+            description: PrismicDOM.RichText.asText(element.primary.video_description),
+          };
+        }),
+      };
+
     case 'newspage':
       let newsPage = data.find(document => document.type === 'newspage');
 
@@ -133,7 +146,6 @@ export const generatePageData = (documentType, data) => {
           .map(news => {
             return {
               ...news,
-              title: PrismicDOM.RichText.asText(news.data.title),
               content: PrismicDOM.RichText.asHtml(news.data.content),
             };
           }),
