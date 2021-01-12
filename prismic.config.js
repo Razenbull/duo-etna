@@ -161,6 +161,7 @@ export const generatePageData = (documentType, data) => {
           : false,
         concerts: data
           .filter(document => document.type === 'concert')
+          .sort((a, b) => new Date(b.data.from) - new Date(a.data.from))
           .map(concert => {
             return {
               ...concert,

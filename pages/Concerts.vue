@@ -26,69 +26,65 @@
     </section>
 
     <div class="concert-list">
-      <Concert
-        v-for="concert in concerts"
-        :concert="concert"
-        :key="concert.name"
-      />
+      <Concert v-for="concert in concerts" :concert="concert" :key="concert.name" />
     </div>
   </div>
 </template>
 
 <script>
-import Prismic from 'prismic-javascript';
-import { initApi, generatePageData } from '@/prismic.config';
-import SocialList from '@/components/SocialList.vue';
-import Concert from '@/components/Concert.vue';
-export default {
-  head: {
-    title: 'Duo Etna | Agenda',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Liste des concerts passés et à venir.',
-      },
-    ],
-  },
-  components: {
-    SocialList,
-    Concert,
-  },
-  asyncData(context) {
-    if (context.payload) {
-      return generatePageData('concertspage', context.payload.data);
-    } else {
-      return initApi().then((api) => {
-        return api
-          .query(
-            Prismic.Predicates.any('document.type', ['concertspage', 'concert'])
-          )
-          .then((response) => {
-            return generatePageData('concertspage', response.results);
-          });
-      });
-    }
-  },
-  data() {
-    return {
-      headerBackground: '',
-    };
-  },
-  mounted() {
-    window.addEventListener('resize', this.handleResize);
-    this.handleResize();
-  },
-  methods: {
-    handleResize() {
-      if (this.backgroundMobile && window.innerWidth < 764) {
-        this.headerBackground = this.backgroundMobile;
+  import Prismic from 'prismic-javascript';
+  import { initApi, generatePageData } from '@/prismic.config';
+  import SocialList from '@/components/SocialList.vue';
+  import Concert from '@/components/Concert.vue';
+  export default {
+    head: {
+      title: 'Duo Etna | Agenda',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Liste des concerts passés et à venir.',
+        },
+      ],
+    },
+    components: {
+      SocialList,
+      Concert,
+    },
+    asyncData(context) {
+      if (context.payload) {
+        return generatePageData('concertspage', context.payload.data);
       } else {
-        this.headerBackground = this.background;
+        return initApi().then(api => {
+          return api
+            .query(Prismic.Predicates.any('document.type', ['concertspage', 'concert']), {
+              orderings: '[concert.from desc]',
+            })
+            .then(response => {
+              return generatePageData('concertspage', response.results);
+            });
+        });
       }
     },
-  },
-};
+    data() {
+      return {
+        headerBackground: '',
+      };
+    },
+    mounted() {
+      window.addEventListener('resize', this.handleResize);
+      this.handleResize();
+    },
+    methods: {
+      handleResize() {
+        if (this.backgroundMobile && window.innerWidth < 764) {
+          this.headerBackground = this.backgroundMobile;
+        } else {
+          this.headerBackground = this.background;
+        }
+      },
+    },
+  };
 </script>
 
 <style></style>
